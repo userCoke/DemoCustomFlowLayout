@@ -19,10 +19,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.itemCount = 11;
+    self.itemCount = 10;
     
-    JKHMyLayout *layout = [[JKHMyLayout alloc] init];
-    layout.palaces = 4;
+    JKHMyLayout *layout = [[JKHMyLayout alloc] initWithRow:2 column:2 scrollDirection:UICollectionViewScrollDirectionVertical];
     UICollectionView *collect = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, UIScreen.mainScreen.bounds.size.width, UIScreen.mainScreen.bounds.size.height) collectionViewLayout:layout];
     self.collect = collect;
     collect.pagingEnabled = YES;
@@ -59,6 +58,7 @@
     lab.textColor = [UIColor redColor];
     lab.text = [NSString stringWithFormat:@"row=%ld", indexPath.row];
     [cell.contentView addSubview:lab];
+
     return cell;
 }
 

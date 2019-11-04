@@ -11,7 +11,8 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface JKHMyLayout : UICollectionViewFlowLayout
-@property (nonatomic, assign) NSInteger palaces; // 宫格数, 默认4宫格
+// 提供初始化方法
+- (instancetype)initWithRow:(NSInteger)row column:(NSInteger)column scrollDirection:(UICollectionViewScrollDirection)scrollDirection;
 @end
 
 NS_ASSUME_NONNULL_END

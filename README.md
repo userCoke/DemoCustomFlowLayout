@@ -2,8 +2,8 @@
 自定义UICollectionViewFlowlayout
 
 关键词
-placesRow：宫格行数
-placesCol：宫格列数
+placesRow：宫格行数  
+placesCol：宫格列数  
 placesWidth：宫格宽
 placesHeight：宫格高
 

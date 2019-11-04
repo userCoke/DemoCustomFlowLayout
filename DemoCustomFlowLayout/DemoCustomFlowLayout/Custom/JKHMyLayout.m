@@ -127,22 +127,21 @@
         attrs.frame = lastFrame;
         [self.attrsArray replaceObjectAtIndex:count-2 withObject:attrs];
     } else if (count%self.palaces == 3) {
-        // 剩3个 上1下2
+        // 剩3个 上1
         UICollectionViewLayoutAttributes *attrs = self.attrsArray[count-3];
         CGRect lastFrame = attrs.frame;
         lastFrame.size.width = self.collectionView.frame.size.width;
+        lastFrame.size.height = self.collectionView.frame.size.height/2;
         attrs.frame = lastFrame;
-        [self.attrsArray replaceObjectAtIndex:count-3 withObject:attrs];
+        [self.attrsArray replaceObjectAtIndex:count-3 withObject:attrs];\
         
-        attrs = self.attrsArray[count-2];
-        lastFrame = attrs.frame;
-        lastFrame.origin.width = self.collectionView.frame.size.width/2;
+        // 下2
+        lastFrame.origin.y = lastFrame.size.height;
+        lastFrame.size.width = lastFrame.size.width/2;
         attrs.frame = lastFrame;
         [self.attrsArray replaceObjectAtIndex:count-2 withObject:attrs];
-        
-        attrs = self.attrsArray[count-2];
-        lastFrame = attrs.frame;
-        lastFrame.origin.x += self.collectionView.frame.size.width/2;
+
+        lastFrame.origin.x += lastFrame.size.width;
         attrs.frame = lastFrame;
         [self.attrsArray replaceObjectAtIndex:count-1 withObject:attrs];
     }

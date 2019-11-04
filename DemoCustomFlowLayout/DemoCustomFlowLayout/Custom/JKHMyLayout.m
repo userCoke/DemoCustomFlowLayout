@@ -134,9 +134,15 @@
         attrs.frame = lastFrame;
         [self.attrsArray replaceObjectAtIndex:count-3 withObject:attrs];
         
-        attrs = self.attrsArray.lastObject;
+        attrs = self.attrsArray[count-2];
         lastFrame = attrs.frame;
-        lastFrame.origin.y = self.collectionView.frame.size.height/2;
+        lastFrame.origin.width = self.collectionView.frame.size.width/2;
+        attrs.frame = lastFrame;
+        [self.attrsArray replaceObjectAtIndex:count-2 withObject:attrs];
+        
+        attrs = self.attrsArray[count-2];
+        lastFrame = attrs.frame;
+        lastFrame.origin.x += self.collectionView.frame.size.width/2;
         attrs.frame = lastFrame;
         [self.attrsArray replaceObjectAtIndex:count-1 withObject:attrs];
     }

@@ -18,11 +18,9 @@ cellY：单元格纵坐标
 关系  
 cellWidth = placesWidth / placesRow;  
 cellHeight = placesHeight / placesHeight;  
-
 cellRow = cellIndex % placesRow;(纵向排)  
 cellCol = cellIndex / placesRow;(纵向排)  
 cellRow = cellIndex / placesRow;(横向排)  
 cellCol = cellIndex % placesRow;(横向排)  
-
 cellX = cellCol * cellWidth;  
 cellY = cellRow * cellHeight;  

@@ -104,17 +104,13 @@
 		260969B0236F3F2D0015F45F /* DemoCustomFlowLayout */ = {
 			isa = PBXGroup;
 			children = (
-				260969E4236F3FBE0015F45F /* Custom */,
+				261B11652371E1C600C754D5 /* Controller */,
+				260969E4236F3FBE0015F45F /* Layout */,
 				260969CA236F3FBE0015F45F /* Masonry */,
 				260969B1236F3F2D0015F45F /* AppDelegate.h */,
 				260969B2236F3F2D0015F45F /* AppDelegate.m */,
 				260969B4236F3F2D0015F45F /* SceneDelegate.h */,
 				260969B5236F3F2D0015F45F /* SceneDelegate.m */,
-				268119082371BB3E00B2282B /* HomeViewController.h */,
-				268119092371BB3E00B2282B /* HomeViewController.m */,
-				2681190A2371BB3E00B2282B /* HomeViewController.xib */,
-				260969B7236F3F2D0015F45F /* ResultViewController.h */,
-				260969B8236F3F2D0015F45F /* ResultViewController.m */,
 				260969BA236F3F2D0015F45F /* Main.storyboard */,
 				260969BD236F3F2E0015F45F /* Assets.xcassets */,
 				260969BF236F3F2E0015F45F /* LaunchScreen.storyboard */,
@@ -156,13 +152,25 @@
 			path = Masonry;
 			sourceTree = "<group>";
 		};
-		260969E4236F3FBE0015F45F /* Custom */ = {
+		260969E4236F3FBE0015F45F /* Layout */ = {
 			isa = PBXGroup;
 			children = (
 				260969E6236F3FBE0015F45F /* JKHMyLayout.h */,
 				260969E5236F3FBE0015F45F /* JKHMyLayout.m */,
 			);
-			path = Custom;
+			path = Layout;
+			sourceTree = "<group>";
+		};
+		261B11652371E1C600C754D5 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				268119082371BB3E00B2282B /* HomeViewController.h */,
+				268119092371BB3E00B2282B /* HomeViewController.m */,
+				2681190A2371BB3E00B2282B /* HomeViewController.xib */,
+				260969B7236F3F2D0015F45F /* ResultViewController.h */,
+				260969B8236F3F2D0015F45F /* ResultViewController.m */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

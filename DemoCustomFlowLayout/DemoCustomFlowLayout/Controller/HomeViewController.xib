@@ -26,7 +26,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="0.0" maxValue="20" translatesAutoresizingMaskIntoConstraints="NO" id="zI6-pJ-KnF">
-                    <rect key="frame" x="28" y="292" width="358" height="31"/>
+                    <rect key="frame" x="28" y="242" width="358" height="31"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="7sG-qr-ROh"/>
                     </constraints>
@@ -35,7 +35,7 @@
                     </connections>
                 </slider>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="行" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pCb-9H-QL2">
-                    <rect key="frame" x="30" y="218" width="354" height="44"/>
+                    <rect key="frame" x="30" y="168" width="354" height="44"/>
                     <color key="backgroundColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="44" id="Rwe-Le-nNT"/>
@@ -45,7 +45,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="1et-fV-f2A">
-                    <rect key="frame" x="30" y="144" width="354" height="45"/>
+                    <rect key="frame" x="30" y="94" width="354" height="45"/>
                     <color key="backgroundColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="44" id="GyL-Ab-XcJ"/>
@@ -56,7 +56,7 @@
                     </segments>
                 </segmentedControl>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="个数据" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C7m-3O-ep6">
-                    <rect key="frame" x="30" y="486" width="354" height="44"/>
+                    <rect key="frame" x="30" y="436" width="354" height="44"/>
                     <color key="backgroundColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="44" id="bl1-3x-6NG"/>
@@ -66,7 +66,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="0.0" maxValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="qhk-mq-w0e">
-                    <rect key="frame" x="28" y="560" width="358" height="31"/>
+                    <rect key="frame" x="28" y="510" width="358" height="31"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="nzt-Yr-zWy"/>
                     </constraints>
@@ -75,7 +75,7 @@
                     </connections>
                 </slider>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="列" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ojs-i5-3LR">
-                    <rect key="frame" x="30" y="352" width="354" height="44"/>
+                    <rect key="frame" x="30" y="302" width="354" height="44"/>
                     <color key="backgroundColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="44" id="5cv-0Q-2sq"/>
@@ -85,7 +85,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lgn-f2-blh">
-                    <rect key="frame" x="30" y="620" width="354" height="64"/>
+                    <rect key="frame" x="30" y="570" width="354" height="64"/>
                     <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="64" id="29p-do-0oI"/>
@@ -98,7 +98,7 @@
                     </connections>
                 </button>
                 <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="0.0" maxValue="20" translatesAutoresizingMaskIntoConstraints="NO" id="wvg-uf-3S7">
-                    <rect key="frame" x="28" y="426" width="358" height="31"/>
+                    <rect key="frame" x="28" y="376" width="358" height="31"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="FTC-SO-fL3"/>
                     </constraints>
@@ -111,7 +111,7 @@
             <constraints>
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="lgn-f2-blh" secondAttribute="trailing" constant="30" id="4tv-tx-wVJ"/>
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="1et-fV-f2A" secondAttribute="trailing" constant="30" id="7Cr-qu-dXs"/>
-                <constraint firstItem="1et-fV-f2A" firstAttribute="top" secondItem="Q5M-cg-NOt" secondAttribute="top" constant="100" id="BvB-8p-NU6"/>
+                <constraint firstItem="1et-fV-f2A" firstAttribute="top" secondItem="Q5M-cg-NOt" secondAttribute="top" constant="50" id="BvB-8p-NU6"/>
                 <constraint firstItem="zI6-pJ-KnF" firstAttribute="top" secondItem="pCb-9H-QL2" secondAttribute="bottom" constant="30" id="Du7-6u-guB"/>
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="pCb-9H-QL2" secondAttribute="trailing" constant="30" id="E0G-ea-Scu"/>
                 <constraint firstItem="lgn-f2-blh" firstAttribute="top" secondItem="qhk-mq-w0e" secondAttribute="bottom" constant="30" id="FSF-ax-CZc"/>

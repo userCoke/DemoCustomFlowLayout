@@ -11,6 +11,7 @@
 
 @interface ViewController () <UICollectionViewDelegate,UICollectionViewDataSource>
 @property (nonatomic, strong) UICollectionView *collect;
+@property (nonatomic, strong) JKHMyLayout *layout;
 @property (nonatomic, assign) NSInteger itemCount;
 @end
 
@@ -19,9 +20,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.itemCount = 10;
+    self.itemCount = 28;
     
-    JKHMyLayout *layout = [[JKHMyLayout alloc] initWithRow:2 column:2 scrollDirection:UICollectionViewScrollDirectionVertical];
+    JKHMyLayout *layout = [[JKHMyLayout alloc] initWithRow:5 column:5 scrollDirection:UICollectionViewScrollDirectionHorizontal];
+    self.layout = layout;
     UICollectionView *collect = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, UIScreen.mainScreen.bounds.size.width, UIScreen.mainScreen.bounds.size.height) collectionViewLayout:layout];
     self.collect = collect;
     collect.pagingEnabled = YES;
@@ -33,17 +35,30 @@
     [self contentInsetHeaderView];
 }
 
-
 - (void)contentInsetHeaderView {
-    CGFloat header_w = [UIScreen mainScreen].bounds.size.width;
-    self.collect.contentInset = UIEdgeInsetsMake(0, header_w, 0, 0);
-    UILabel *headerView = [[UILabel alloc] initWithFrame:CGRectMake(-header_w, 0, header_w, [UIScreen mainScreen].bounds.size.height)];
-    headerView.text = @"我是表头";
-    headerView.textColor = [UIColor redColor];
-    headerView.textAlignment = NSTextAlignmentCenter;
-    headerView.backgroundColor = [UIColor blueColor];
-    [self.collect addSubview:headerView];
-    [self.collect setContentOffset:CGPointMake(-header_w, -0)];
+    if (self.layout.scrollDirection == UICollectionViewScrollDirectionHorizontal) {
+        // 横向
+        CGFloat header_w = [UIScreen mainScreen].bounds.size.width;
+        self.collect.contentInset = UIEdgeInsetsMake(0, header_w, 0, 0);
+        UILabel *headerView = [[UILabel alloc] initWithFrame:CGRectMake(-header_w, 0, header_w, [UIScreen mainScreen].bounds.size.height)];
+        headerView.text = @"我是表头";
+        headerView.textColor = [UIColor redColor];
+        headerView.textAlignment = NSTextAlignmentCenter;
+        headerView.backgroundColor = [UIColor blueColor];
+        [self.collect addSubview:headerView];
+        [self.collect setContentOffset:CGPointMake(-header_w, -0)];
+    } else {
+        // 纵向
+        CGFloat header_h = [UIScreen mainScreen].bounds.size.height;
+        self.collect.contentInset = UIEdgeInsetsMake(header_h, 0, 0, 0);
+        UILabel *headerView = [[UILabel alloc] initWithFrame:CGRectMake(0, -header_h, [UIScreen mainScreen].bounds.size.width, header_h)];
+        headerView.text = @"我是表头";
+        headerView.textColor = [UIColor redColor];
+        headerView.textAlignment = NSTextAlignmentCenter;
+        headerView.backgroundColor = [UIColor blueColor];
+        [self.collect addSubview:headerView];
+        [self.collect setContentOffset:CGPointMake(-0, -header_h)];
+    }
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {

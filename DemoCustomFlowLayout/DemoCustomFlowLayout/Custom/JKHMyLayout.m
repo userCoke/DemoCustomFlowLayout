@@ -83,11 +83,11 @@
         CGFloat cellY;
 
         if (self.isVertical) {
-            cellRow = i / self.placesRow;
-            cellColumn = i % self.placesRow;
+            cellColumn = i % self.placesColumn;
+            cellRow = i / self.placesColumn;
         } else {
-            cellRow = i % self.placesRow;
             cellColumn = i / self.placesRow;
+            cellRow = i % self.placesRow;
         }
         cellX = cellColumn * self.cellWidth;
         cellY = cellRow * self.cellHeight;
@@ -99,7 +99,7 @@
     // TODO: 对最后一页布局进行调整
     if (count%self.palaces == 1) {
         // 剩1个 铺满
-        UICollectionViewLayoutAttributes *attrs = self.attrsArray.lastObject;
+        UICollectionViewLayoutAttributes *attrs = self.attrsArray[count-1];
         CGRect lastFrame = attrs.frame;
         lastFrame.size.width = self.collectionView.frame.size.width;
         lastFrame.size.height = self.collectionView.frame.size.height;
@@ -107,25 +107,17 @@
         [self.attrsArray replaceObjectAtIndex:count-1 withObject:attrs];
     } else if (count%self.palaces == 2) {
         // 剩2个 上1下1
-        UICollectionViewLayoutAttributes *attrs = self.attrsArray[count-1];
+        UICollectionViewLayoutAttributes *attrs = self.attrsArray[count-2];
         CGRect lastFrame = attrs.frame;
-        if (self.scrollDirection == UICollectionViewScrollDirectionVertical) {
-            lastFrame.size.height = self.collectionView.frame.size.height;
-        } else {
-            lastFrame.size.width = self.collectionView.frame.size.width;
-        }
-        attrs.frame = lastFrame;
-        [self.attrsArray replaceObjectAtIndex:count-1 withObject:attrs];
-
-        attrs = self.attrsArray[count-2];
-        lastFrame = attrs.frame;
-        if (self.scrollDirection == UICollectionViewScrollDirectionVertical) {
-            lastFrame.size.height = self.collectionView.frame.size.height;
-        } else {
-            lastFrame.size.width = self.collectionView.frame.size.width;
-        }
+        lastFrame.size.width = self.collectionView.frame.size.width;
+        lastFrame.size.height = self.collectionView.frame.size.height/2;
         attrs.frame = lastFrame;
         [self.attrsArray replaceObjectAtIndex:count-2 withObject:attrs];
+
+        attrs = self.attrsArray[count-1];
+        lastFrame.origin.y += lastFrame.size.height;
+        attrs.frame = lastFrame;
+        [self.attrsArray replaceObjectAtIndex:count-1 withObject:attrs];
     } else if (count%self.palaces == 3) {
         // 剩3个 上1
         UICollectionViewLayoutAttributes *attrs = self.attrsArray[count-3];
@@ -134,14 +126,41 @@
         lastFrame.size.height = self.collectionView.frame.size.height/2;
         attrs.frame = lastFrame;
         [self.attrsArray replaceObjectAtIndex:count-3 withObject:attrs];\
-        
+
         // 下2
+        attrs = self.attrsArray[count-2];
         lastFrame.origin.y = lastFrame.size.height;
         lastFrame.size.width = lastFrame.size.width/2;
         attrs.frame = lastFrame;
         [self.attrsArray replaceObjectAtIndex:count-2 withObject:attrs];
 
+        attrs = self.attrsArray[count-1];
         lastFrame.origin.x += lastFrame.size.width;
+        attrs.frame = lastFrame;
+        [self.attrsArray replaceObjectAtIndex:count-1 withObject:attrs];
+    } else if (count%self.palaces == 4) {
+        // 剩4个 上2
+        UICollectionViewLayoutAttributes *attrs = self.attrsArray[count-4];
+        CGRect lastFrame = attrs.frame;
+        lastFrame.size.width = self.collectionView.frame.size.width/2;
+        lastFrame.size.height = self.collectionView.frame.size.height/2;
+        attrs.frame = lastFrame;
+        [self.attrsArray replaceObjectAtIndex:count-4 withObject:attrs];
+
+        attrs = self.attrsArray[count-3];
+        lastFrame.origin.y = CGRectGetMaxY(lastFrame);
+        attrs.frame = lastFrame;
+        [self.attrsArray replaceObjectAtIndex:count-3 withObject:attrs];
+
+        // 下2
+        attrs = self.attrsArray[count-2];
+        lastFrame.origin.x = CGRectGetMaxX(lastFrame);
+        lastFrame.origin.y = CGRectGetMinY(lastFrame)-lastFrame.size.height;
+        attrs.frame = lastFrame;
+        [self.attrsArray replaceObjectAtIndex:count-2 withObject:attrs];
+
+        attrs = self.attrsArray[count-1];
+        lastFrame.origin.y = CGRectGetMaxY(lastFrame);
         attrs.frame = lastFrame;
         [self.attrsArray replaceObjectAtIndex:count-1 withObject:attrs];
     }

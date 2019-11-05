@@ -13,6 +13,9 @@ NS_ASSUME_NONNULL_BEGIN
 @interface JKHMyLayout : UICollectionViewFlowLayout
 // 提供初始化方法
 - (instancetype)initWithRow:(NSInteger)row column:(NSInteger)column scrollDirection:(UICollectionViewScrollDirection)scrollDirection;
+
++ (instancetype)layoutWithRowWithRow:(NSInteger)row column:(NSInteger)column scrollDirection:(UICollectionViewScrollDirection)scrollDirection;
+
 @end
 
 NS_ASSUME_NONNULL_END

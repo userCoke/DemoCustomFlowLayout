@@ -15,10 +15,6 @@
 @property (nonatomic, assign) NSInteger placesRow;
 /** 宫格列数 */
 @property (nonatomic, assign) NSInteger placesColumn;
-/** 单元格宽 */
-@property (nonatomic, assign) CGFloat cellWidth;
-/** 单元格高 */
-@property (nonatomic, assign) CGFloat cellHeight;
 /** 是否是纵向 */
 @property (nonatomic, assign) BOOL isVertical;
 /** 所有的布局属性 */
@@ -36,13 +32,17 @@
 }
 
 #pragma mark - Life
++ (instancetype)layoutWithRowWithRow:(NSInteger)row column:(NSInteger)column scrollDirection:(UICollectionViewScrollDirection)scrollDirection {
+    return  [[JKHMyLayout alloc] initWithRow:row column:column scrollDirection:scrollDirection];
+}
+
 - (instancetype)initWithRow:(NSInteger)row column:(NSInteger)column scrollDirection:(UICollectionViewScrollDirection)scrollDirection {
     if (self = [super init]) {
-        self.placesRow = row;
-        self.placesColumn = column;
-        self.palaces = row * column;
         self.scrollDirection = scrollDirection;
-        self.isVertical = (scrollDirection == UICollectionViewScrollDirectionVertical);
+        _placesRow = row;
+        _placesColumn = column;
+        _palaces = row * column;
+        _isVertical = (scrollDirection == UICollectionViewScrollDirectionVertical);
     }
     return self;
 }
@@ -52,8 +52,8 @@
     [super prepareLayout];
     
     // 根据宫格规则布局
-    CGFloat cellWidth = self.collectionView.frame.size.width/self.placesColumn;
-    CGFloat cellHeight = self.collectionView.frame.size.height/self.placesRow;
+    CGFloat cellWidth = self.collectionView.frame.size.width/_placesColumn;
+    CGFloat cellHeight = self.collectionView.frame.size.height/_placesRow;
     
     NSInteger count = [self.collectionView numberOfItemsInSection:0];
     
@@ -66,22 +66,22 @@
         CGFloat cellX;
         CGFloat cellY;
 
-        if (self.isVertical) {
-            cellColumn = i % self.placesColumn;
-            cellRow = i / self.placesColumn;
+        if (_isVertical) {
+            cellColumn = i % _placesColumn;
+            cellRow = i / _placesColumn;
         } else {
-            cellColumn = i / self.placesRow;
-            cellRow = i % self.placesRow;
+            cellColumn = i / _placesRow;
+            cellRow = i % _placesRow;
         }
-        cellX = cellColumn * self.cellWidth;
-        cellY = cellRow * self.cellHeight;
+        cellX = cellColumn * cellWidth;
+        cellY = cellRow * cellHeight;
         
         attrs.frame = CGRectMake(cellX, cellY, cellWidth, cellHeight);
         [self.attrsArray addObject:attrs];
     }
     
     // TODO: 对最后一页布局进行调整
-    if (count%self.palaces == 1) {
+    if (count%_palaces == 1) {
         // 剩1个 铺满
         UICollectionViewLayoutAttributes *attrs = self.attrsArray[count-1];
         CGRect lastFrame = attrs.frame;
@@ -89,7 +89,7 @@
         lastFrame.size.height = self.collectionView.frame.size.height;
         attrs.frame = lastFrame;
         [self.attrsArray replaceObjectAtIndex:count-1 withObject:attrs];
-    } else if (count%self.palaces == 2) {
+    } else if (count%_palaces == 2) {
         // 剩2个 上1下1
         UICollectionViewLayoutAttributes *attrs = self.attrsArray[count-2];
         CGRect lastFrame = attrs.frame;
@@ -102,7 +102,7 @@
         lastFrame.origin.y += lastFrame.size.height;
         attrs.frame = lastFrame;
         [self.attrsArray replaceObjectAtIndex:count-1 withObject:attrs];
-    } else if (count%self.palaces == 3) {
+    } else if (count%_palaces == 3) {
         // 剩3个 上1
         UICollectionViewLayoutAttributes *attrs = self.attrsArray[count-3];
         CGRect lastFrame = attrs.frame;
@@ -122,7 +122,7 @@
         lastFrame.origin.x += lastFrame.size.width;
         attrs.frame = lastFrame;
         [self.attrsArray replaceObjectAtIndex:count-1 withObject:attrs];
-    } else if (count%self.palaces == 4) {
+    } else if (count%_palaces == 4) {
         // 剩4个 上2
         UICollectionViewLayoutAttributes *attrs = self.attrsArray[count-4];
         CGRect lastFrame = attrs.frame;
@@ -154,10 +154,10 @@
 - (CGSize)collectionViewContentSize {
     NSInteger count = [self.collectionView numberOfItemsInSection:0];
     NSInteger page;
-    if (count%self.palaces > 0) {
-        page = count/self.palaces + 1;
+    if (count%_palaces > 0) {
+        page = count/_palaces + 1;
     } else {
-        page = count/self.palaces;
+        page = count/_palaces;
     }
     
     if (self.scrollDirection == UICollectionViewScrollDirectionHorizontal) {

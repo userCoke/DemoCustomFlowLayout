@@ -1,5 +1,5 @@
 #import "SceneDelegate.h"
-#import "ViewController.h"
+#import "HomeViewController.h"
 @interface SceneDelegate ()
 
 @end
@@ -11,7 +11,7 @@
     UIWindowScene *windowScene = (UIWindowScene *)scene;
     self.window = [[UIWindow alloc] initWithWindowScene:windowScene];
     self.window.frame = windowScene.coordinateSpace.bounds;
-    self.window.rootViewController = [ViewController new];
+    self.window.rootViewController = [HomeViewController new];
     [self.window makeKeyAndVisible];
 }
 

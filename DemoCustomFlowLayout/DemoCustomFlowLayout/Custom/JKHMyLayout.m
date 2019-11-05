@@ -177,9 +177,11 @@
 // TODO:2.返回collectionView的内容大小
 - (CGSize)collectionViewContentSize {
     NSInteger count = [self.collectionView numberOfItemsInSection:0];
-    NSInteger page = count/self.palaces;
-    if (count%self.palaces>0) {
-        page++;
+    NSInteger page;
+    if (count%self.palaces > 0) {
+        page = count/self.palaces + 1;
+    } else {
+        page = count/self.palaces;
     }
     
     if (self.scrollDirection == UICollectionViewScrollDirectionHorizontal) {
